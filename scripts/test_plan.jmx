@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="API Test Plan" enabled="true">
+    <stringProp name="TestPlan.comments">Test Plan for API Testing</stringProp>
+    <stringProp name="TestPlan.user_defined_variables"></stringProp>
+    <boolProp name="TestPlan.functional_mode">false</boolProp>
+    <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+    <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+    <hashTree>
+        <!-- Thread Group -->
+        <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+            <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+            <stringProp name="ThreadGroup.num_threads">1</stringProp> <!-- Number of virtual users -->
+            <stringProp name="ThreadGroup.ramp_time">1</stringProp> <!-- Ramp-up period -->
+            <stringProp name="ThreadGroup.loops">1</stringProp> <!-- Loop count -->
+            <hashTree>
+                <!-- HTTP Sampler (GET Request) -->
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET API Request" enabled="true">
+                    <stringProp name="HTTPSampler.domain">localhost</stringProp>
+                    <stringProp name="HTTPSampler.port">5000</stringProp>
+                    <stringProp name="HTTPSampler.path">/api/test</stringProp>
+                    <stringProp name="HTTPSampler.method">GET</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp> <!-- Default HttpClient4 implementation in JMeter 5.6.3 -->
+                </HTTPSamplerProxy>
+                <hashTree/>
+            </hashTree>
+        </ThreadGroup>
+        <hashTree/>
+
+        <!-- Listener to see results -->
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <stringProp name="filename"></stringProp> <!-- No file output, just GUI -->
+        </ResultCollector>
+        <hashTree/>
+    </hashTree>
+</TestPlan>

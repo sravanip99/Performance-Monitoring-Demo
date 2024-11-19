@@ -1,0 +1,13 @@
+
+{
+  "dashboard": {
+    "title": "Performance Dashboard",
+    "panels": [
+      {
+        "type": "graph",
+        "title": "Response Time",
+        "targets": []
+      }
+    ]
+  }
+}
